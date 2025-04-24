@@ -23,7 +23,7 @@ export default function Login(){
         setLoading(true)
         console.log('register',formsdata)
         try{
-            let data= await axios.post(`http://timetableapi.runasp.net/api/Auth/token`,formsdata)
+            let data= await axios.post(`/api/Auth/token`,formsdata)
             console.log(data)
             
             if(data.message==null){

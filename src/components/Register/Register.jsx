@@ -23,7 +23,7 @@ export default function Register(){
         setLoading(true)
         console.log('register',formsdata)
         try{
-            let data= await axios.post(`http://timetableapi.runasp.net/api/Auth/register`,formsdata)
+            let data= await axios.post(`api/Auth/register`,formsdata)
             console.log(data)
             if(data.data?.message == null){
                 localStorage.setItem('userToken', data.data.token);
