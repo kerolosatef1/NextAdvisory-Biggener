@@ -14,7 +14,7 @@ import {
   DialogHeader,
   DialogFooter,
   ThemeProvider,
-  Spinner,حذف
+  Spinner
 }from "@material-tailwind/react";
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -28,7 +28,7 @@ const ProfessorCoursesManager = ({ professorId }) => {
     queryKey: ['courses'],
     queryFn: async () => {
       const token = localStorage.getItem("userToken");
-      const { data } = await axios.get("http://timetableapi.runasp.net/api/Courses", {
+      const { data } = await axios.get(`https://timetableapi.runasp.net/api/Courses`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return data;
@@ -41,7 +41,7 @@ const ProfessorCoursesManager = ({ professorId }) => {
     queryFn: async () => {
       const token = localStorage.getItem("userToken");
       const { data } = await axios.get(
-        `http://timetableapi.runasp.net/api/CourseProfessors/${professorId}`,
+        `https://timetableapi.runasp.net/api/CourseProfessors/${professorId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       return data;
@@ -52,7 +52,7 @@ const ProfessorCoursesManager = ({ professorId }) => {
   // إضافة مادة
   const assignMutation = useMutation({
     mutationFn: (courseId) => axios.post(
-      `http://timetableapi.runasp.net/api/CourseProfessors/${professorId}/${courseId}`,
+      `https://timetableapi.runasp.net/api/CourseProfessors/${professorId}/${courseId}`,
       {},
       { headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` } }
     ),
@@ -65,7 +65,7 @@ const ProfessorCoursesManager = ({ professorId }) => {
   // حذف مادة
   const unassignMutation = useMutation({
     mutationFn: (courseId) => axios.delete(
-      `http://timetableapi.runasp.net/api/CourseProfessors/${professorId}/${courseId}`,
+      `https://timetableapi.runasp.net/api/CourseProfessors/${professorId}/${courseId}`,
       { headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` } }
     ),
     onSuccess: () => queryClient.invalidateQueries(['assignedCourses', professorId])
@@ -166,8 +166,8 @@ const GetProfessors = () => {
       };
       
       const url = isEdit 
-        ? `http://timetableapi.runasp.net/api/Professors/${payload.id}`
-        : "http://timetableapi.runasp.net/api/Professors";
+        ? `https://timetableapi.runasp.net/api/Professors/${payload.id}`
+        : `https://timetableapi.runasp.net/api/Professors`;
       
       const method = isEdit ? axios.put : axios.post;
       const { data } = await method(url, payload, { headers });
@@ -202,7 +202,7 @@ const GetProfessors = () => {
     queryFn: async () => {
       const token = localStorage.getItem("userToken");
       const { data } = await axios.get(
-        "http://timetableapi.runasp.net/api/Professors",
+        `https://timetableapi.runasp.net/api/Professors`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -225,7 +225,7 @@ const GetProfessors = () => {
     mutationFn: async (id) => {
       const token = localStorage.getItem("userToken");
       await axios.delete(
-        `http://timetableapi.runasp.net/api/Professors/${id}`,
+        `https://timetableapi.runasp.net/api/Professors/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
     },

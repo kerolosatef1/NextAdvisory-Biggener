@@ -87,7 +87,7 @@ useEffect(() => {
         ...daysObject,
       };
 
-      const url = `http://timetableapi.runasp.net/api/Professors/${professorData.id}`;
+      const url = `https://timetableapi.runasp.net/api/Professors/${professorData.id}`;
     const method = isEdit ? "put" : "post";
 
     await axios[method](url, professorData, {

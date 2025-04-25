@@ -11,7 +11,7 @@ const GetProfessors = () => {
   useEffect(() => {
     const fetchProfessors = async () => {
       try {
-        const response = await axios.get("http://timetableapi.runasp.net/api/Proffessors");
+        const response = await axios.get(`https://timetableapi.runasp.net/api/Proffessors`);
         setProfessors(response.data);
         setFilteredProfessors(response.data);
       } catch (err) {

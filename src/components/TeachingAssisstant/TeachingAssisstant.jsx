@@ -83,13 +83,13 @@ const GetProfessors = () => {
       let response;
       if (isEdit) {
         response = await axios.put(
-          `http://timetableapi.runasp.net/api/TeachingAssistants/${professor.id}`,
+          `https://timetableapi.runasp.net/api/TeachingAssistants/${professor.id}`,
           professorData,
           { headers }
         );
       } else {
         response = await axios.post(
-          "http://timetableapi.runasp.net/api/TeachingAssistants",
+          "https://timetableapi.runasp.net/api/TeachingAssistants",
           professorData,
           { headers }
         );
@@ -144,7 +144,7 @@ const GetProfessors = () => {
       }
     
       try {
-        const response = await axios.get("http://timetableapi.runasp.net/api/TeachingAssistants", {
+        const response = await axios.get(`https://timetableapi.runasp.net/api/TeachingAssistants`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json"
@@ -178,7 +178,7 @@ const GetProfessors = () => {
     }
   
     try {
-      await axios.delete(`http://timetableapi.runasp.net/api/TeachingAssistants/${id}`, {
+      await axios.delete(`https://timetableapi.runasp.net/api/TeachingAssistants/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

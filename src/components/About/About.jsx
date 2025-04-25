@@ -66,7 +66,7 @@ const AddProfessor = () => {
       console.log("📤 Sending Data:", JSON.stringify(professorData, null, 2));
 
       const response = await axios.post(
-        "http://timetableapi.runasp.net/api/Professors",
+        "https://timetableapi.runasp.net/api/Professors",
         professorData,
         {
           headers: {

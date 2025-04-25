@@ -55,8 +55,8 @@ const mutation = useMutation({
   mutationFn: async (payload) => {
     const token = localStorage.getItem("userToken");
     const url = isEdit 
-      ? `http://timetableapi.runasp.net/api/Courses/${editCourses.id}`
-      : "http://timetableapi.runasp.net/api/Courses";
+      ? `https://timetableapi.runasp.net/api/Courses/${editCourses.id}`
+      : `https://timetableapi.runasp.net/api/Courses`;
     
     const method = isEdit ? axios.put : axios.post;
     
@@ -106,7 +106,7 @@ const { data: courses = [], isLoading, isError, error } = useQuery({
       throw new Error('Token not found');
     }
     const { data } = await axios.get(
-      "http://timetableapi.runasp.net/api/Courses",
+      `https://timetableapi.runasp.net/api/Courses`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -128,7 +128,7 @@ const deleteMutation = useMutation({
   mutationFn: async (id) => {
     const token = localStorage.getItem("userToken");
     await axios.delete(
-      `http://timetableapi.runasp.net/api/Courses/${id}`,
+      `https://timetableapi.runasp.net/api/Courses/${id}`,
       { 
         headers: { 
           Authorization: `Bearer ${token}`,

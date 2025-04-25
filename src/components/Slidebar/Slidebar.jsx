@@ -11,7 +11,7 @@ const GetProfessors = () => {
   useEffect(() => {
     const fetchProfessors = async () => {
       try {
-        const response = await axios.get("/api/professors");
+        const response = await axios.get(`/api/professors`);
         setProfessors(response.data);
         setFilteredProfessors(response.data);
       } catch (err) {
